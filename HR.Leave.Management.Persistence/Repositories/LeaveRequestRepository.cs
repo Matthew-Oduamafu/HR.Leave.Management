@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HR.Leave.Management.Persistence.Repositories
 {
-    public class LeaveRequestRepository:GenericRepository<LeaveRequest>, ILeaveRequestRepository
+    public class LeaveRequestRepository : GenericRepository<LeaveRequest>, ILeaveRequestRepository
     {
         private readonly HRLeaveManagementDbContext _dbContext;
 
@@ -15,13 +15,13 @@ namespace HR.Leave.Management.Persistence.Repositories
 
         public async Task<List<LeaveRequest>> GetLeaveRequestWithDetails()
         {
-            var leaveRequests = await _dbContext.Set<LeaveRequest>().Include(x=>x.LeaveType).ToListAsync();
+            var leaveRequests = await _dbContext.Set<LeaveRequest>().Include(x => x.LeaveType).ToListAsync();
             return leaveRequests;
         }
 
         public async Task<LeaveRequest> GetLeaveRequestWithDetails(int id)
         {
-            var leaveRequest = await _dbContext.Set<LeaveRequest>().Include(x=>x.LeaveType).FirstOrDefaultAsync(x=>x.Id ==id);
+            var leaveRequest = await _dbContext.Set<LeaveRequest>().Include(x => x.LeaveType).FirstOrDefaultAsync(x => x.Id == id);
             return leaveRequest;
         }
     }

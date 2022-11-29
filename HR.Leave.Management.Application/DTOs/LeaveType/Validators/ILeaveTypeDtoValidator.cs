@@ -2,7 +2,7 @@
 
 namespace HR.Leave.Management.Application.DTOs.LeaveType.Validators
 {
-    public class ILeaveTypeDtoValidator: AbstractValidator<ILeaveTypeDto>
+    public class ILeaveTypeDtoValidator : AbstractValidator<ILeaveTypeDto>
     {
         public ILeaveTypeDtoValidator()
         {

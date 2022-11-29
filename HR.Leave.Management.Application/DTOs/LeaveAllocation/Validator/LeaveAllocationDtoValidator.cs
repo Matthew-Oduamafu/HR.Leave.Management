@@ -7,6 +7,7 @@ namespace HR.Leave.Management.Application.DTOs.LeaveAllocation.Validator
     {
         private readonly ILeaveTypeRepository _leaveTypeRepository;
         private readonly ILeaveAllocationRepository _leaveAllocationRepository;
+
         public LeaveAllocationDtoValidator(ILeaveTypeRepository leaveTypeRepository, ILeaveAllocationRepository leaveAllocationRepository)
         {
             _leaveTypeRepository = leaveTypeRepository;
@@ -15,7 +16,7 @@ namespace HR.Leave.Management.Application.DTOs.LeaveAllocation.Validator
             Include(new ILeaveAllocationDtoValidator(_leaveTypeRepository));
             RuleFor(x => x.Id)
                 .NotNull().WithMessage("{PropertyName} must be present")
-                .MustAsync( async (id, token) =>
+                .MustAsync(async (id, token) =>
                 {
                     var leaveAllocation = await _leaveAllocationRepository.Exists(id);
                     return leaveAllocation;

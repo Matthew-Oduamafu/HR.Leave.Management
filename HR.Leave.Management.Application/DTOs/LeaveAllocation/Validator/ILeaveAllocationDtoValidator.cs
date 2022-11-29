@@ -3,9 +3,10 @@ using HR.Leave.Management.Application.Contracts.Persistence;
 
 namespace HR.Leave.Management.Application.DTOs.LeaveAllocation.Validator
 {
-    public class ILeaveAllocationDtoValidator:AbstractValidator<ILeaveAllocationDto>
+    public class ILeaveAllocationDtoValidator : AbstractValidator<ILeaveAllocationDto>
     {
         private readonly ILeaveTypeRepository _leaveTypeRepository;
+
         public ILeaveAllocationDtoValidator(ILeaveTypeRepository leaveTypeRepository)
         {
             _leaveTypeRepository = leaveTypeRepository;
@@ -15,7 +16,7 @@ namespace HR.Leave.Management.Application.DTOs.LeaveAllocation.Validator
                 .GreaterThan(0).WithMessage("{PropertyName} must exceed {ComparisonValue}")
                 .InclusiveBetween(1, 100).WithMessage("{PropertyName} must be between {ComparisonRange} inclusive");
 
-            RuleFor(x=>x.Period)
+            RuleFor(x => x.Period)
                 .NotNull().WithMessage("{PropertyName} must be present")
                 .GreaterThan(0).WithMessage("{PropertyName} must exceed {ComparisonValue}")
                 .InclusiveBetween(1, 90).WithMessage("{PropertyName} must be between {ComparisonRange} inclusive");
@@ -27,7 +28,6 @@ namespace HR.Leave.Management.Application.DTOs.LeaveAllocation.Validator
                     var leaveType = await _leaveTypeRepository.Exists(id);
                     return leaveType;
                 }).WithMessage("{PropertyName} not found in the DB");
-
         }
     }
 }

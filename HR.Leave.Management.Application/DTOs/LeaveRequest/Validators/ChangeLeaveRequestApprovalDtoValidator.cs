@@ -3,12 +3,13 @@ using HR.Leave.Management.Application.Contracts.Persistence;
 
 namespace HR.Leave.Management.Application.DTOs.LeaveRequest.Validators
 {
-    public class ChangeLeaveRequestApprovalDtoValidator:AbstractValidator<ChangeLeaveRequestApprovalDto>
+    public class ChangeLeaveRequestApprovalDtoValidator : AbstractValidator<ChangeLeaveRequestApprovalDto>
     {
         private readonly ILeaveRequestRepository _leaveRequestRepository;
+
         public ChangeLeaveRequestApprovalDtoValidator(ILeaveRequestRepository leaveRequestRepository)
         {
-            _leaveRequestRepository= leaveRequestRepository;
+            _leaveRequestRepository = leaveRequestRepository;
 
             RuleFor(x => x.Id)
                 .NotNull().WithMessage("{PropertyName} must be present")

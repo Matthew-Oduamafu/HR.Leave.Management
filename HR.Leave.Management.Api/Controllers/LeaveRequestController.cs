@@ -1,10 +1,8 @@
-﻿using AutoMapper;
-using HR.Leave.Management.Application.DTOs.LeaveRequest;
+﻿using HR.Leave.Management.Application.DTOs.LeaveRequest;
 using HR.Leave.Management.Application.Features.LeaveRequests.Requests.Commands;
 using HR.Leave.Management.Application.Features.LeaveRequests.Requests.Queries;
 using HR.Leave.Management.Application.Responses;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HR.Leave.Management.Api.Controllers
@@ -17,9 +15,8 @@ namespace HR.Leave.Management.Api.Controllers
 
         public LeaveRequestController(IMediator mediator)
         {
-            _mediator= mediator;
+            _mediator = mediator;
         }
-
 
         // GET: LeaveRequestController
         [HttpGet]
@@ -33,7 +30,7 @@ namespace HR.Leave.Management.Api.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<LeaveRequestListDto>> Get(int id)
         {
-            var leaveRequest = await _mediator.Send(new GetLeaveRequestDetailRequest { Id = id});
+            var leaveRequest = await _mediator.Send(new GetLeaveRequestDetailRequest { Id = id });
             return Ok(leaveRequest);
         }
 
@@ -50,7 +47,7 @@ namespace HR.Leave.Management.Api.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult<CreateOrUpdateCommandResponse>> Update(int id, [FromBody] UpdateLeaveRequestDto leaveRequestDto)
         {
-            var response = await _mediator.Send(new UpdateLeaveRequestCommand {Id=id, UpdateLeaveRequestDto = leaveRequestDto });
+            var response = await _mediator.Send(new UpdateLeaveRequestCommand { Id = id, UpdateLeaveRequestDto = leaveRequestDto });
             return Ok(response);
         }
 
@@ -61,7 +58,6 @@ namespace HR.Leave.Management.Api.Controllers
             var response = await _mediator.Send(new UpdateLeaveRequestCommand { Id = id, ChangeLeaveRequestApprovalDto = leaveRequestDto });
             return Ok(response);
         }
-
 
         // GET: LeaveRequestController/Delete/5
         [HttpDelete("{id}")]

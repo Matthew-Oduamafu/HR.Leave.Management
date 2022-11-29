@@ -61,7 +61,6 @@ namespace HR.Leave.Management.Application.Features.LeaveRequests.Handlers.Comman
                 // log or handle error but don't throw
             }
 
-
             response.Success = true;
             response.Message = "Creation successful";
             response.Object = leaveRequest;

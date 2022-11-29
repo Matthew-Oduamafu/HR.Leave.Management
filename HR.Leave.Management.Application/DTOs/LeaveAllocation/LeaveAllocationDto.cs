@@ -3,7 +3,7 @@ using HR.Leave.Management.Application.DTOs.LeaveType;
 
 namespace HR.Leave.Management.Application.DTOs.LeaveAllocation
 {
-    public class LeaveAllocationDto:BaseDto, ILeaveAllocationDto
+    public class LeaveAllocationDto : BaseDto, ILeaveAllocationDto
     {
         public int NumberOfDays { get; set; }
         public int LeaveTypeId { get; set; }

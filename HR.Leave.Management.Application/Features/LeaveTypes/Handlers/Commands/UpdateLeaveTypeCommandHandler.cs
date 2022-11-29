@@ -11,6 +11,7 @@ namespace HR.Leave.Management.Application.Features.LeaveTypes.Handlers.Commands
     {
         private readonly ILeaveTypeRepository _leaveTypeRepository;
         private readonly IMapper _mapper;
+
         public UpdateLeaveTypeCommandHandler(ILeaveTypeRepository leaveTypeRepository, IMapper mapper)
         {
             _leaveTypeRepository = leaveTypeRepository;

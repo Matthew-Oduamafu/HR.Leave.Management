@@ -2,19 +2,19 @@
 using HR.Leave.Management.Application.Contracts.Persistence;
 using HR.Leave.Management.Application.DTOs.LeaveRequest;
 using HR.Leave.Management.Application.Features.LeaveRequests.Requests.Queries;
-using HR.Leave.Management.Domain;
 using MediatR;
 
 namespace HR.Leave.Management.Application.Features.LeaveRequests.Handlers.Queries
 {
-    public class GetLeaveRequestDetailRequestHandler:IRequestHandler<GetLeaveRequestDetailRequest, LeaveRequestListDto>
+    public class GetLeaveRequestDetailRequestHandler : IRequestHandler<GetLeaveRequestDetailRequest, LeaveRequestListDto>
     {
         private readonly ILeaveRequestRepository _leaveRequestRepository;
         private readonly IMapper _mapper;
+
         public GetLeaveRequestDetailRequestHandler(ILeaveRequestRepository leaveRequestRepository, IMapper mapper)
         {
-            _leaveRequestRepository= leaveRequestRepository;
-            _mapper= mapper;
+            _leaveRequestRepository = leaveRequestRepository;
+            _mapper = mapper;
         }
 
         public async Task<LeaveRequestListDto> Handle(GetLeaveRequestDetailRequest request, CancellationToken cancellationToken)

@@ -1,10 +1,8 @@
-﻿using AutoMapper;
-using HR.Leave.Management.Application.DTOs.LeaveAllocation;
+﻿using HR.Leave.Management.Application.DTOs.LeaveAllocation;
 using HR.Leave.Management.Application.Features.LeaveAllocations.Requests.Commands;
 using HR.Leave.Management.Application.Features.LeaveAllocations.Requests.Queries;
 using HR.Leave.Management.Application.Responses;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HR.Leave.Management.Api.Controllers
@@ -17,9 +15,8 @@ namespace HR.Leave.Management.Api.Controllers
 
         public LeaveAllocationController(IMediator mediator)
         {
-            _mediator= mediator;
+            _mediator = mediator;
         }
-
 
         // GET: LeaveAllocationController
         [HttpGet]
@@ -33,7 +30,7 @@ namespace HR.Leave.Management.Api.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<LeaveAllocationDto>> Get(int id)
         {
-            var leaveAllocation = await _mediator.Send(new GetLeaveAllocationDetailRequest { Id = id});
+            var leaveAllocation = await _mediator.Send(new GetLeaveAllocationDetailRequest { Id = id });
             return Ok(leaveAllocation);
         }
 
@@ -53,7 +50,6 @@ namespace HR.Leave.Management.Api.Controllers
             var response = await _mediator.Send(new UpdateLeaveAllocationCommand { UpdateLeaveAllocationDto = leaveAllocationDto });
             return Ok(response);
         }
-
 
         // GET: LeaveAllocationController/Delete/5
         [HttpDelete("{id}")]

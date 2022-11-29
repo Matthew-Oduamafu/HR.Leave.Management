@@ -3,13 +3,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HR.Leave.Management.Domain
 {
-    public class LeaveRequest:BaseDomainEntity
+    public class LeaveRequest : BaseDomainEntity
     {
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public int LeaveTypeId { get; set; }
+
         [ForeignKey("LeaveTypeId")]
         public LeaveType LeaveType { get; set; }
+
         public DateTime DateRequested { get; set; }
         public string RequestComments { get; set; }
         public DateTime? DateActioned { get; set; }

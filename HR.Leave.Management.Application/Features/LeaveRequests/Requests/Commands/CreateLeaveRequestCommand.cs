@@ -4,7 +4,7 @@ using MediatR;
 
 namespace HR.Leave.Management.Application.Features.LeaveRequests.Requests.Commands
 {
-    public class CreateLeaveRequestCommand:IRequest<CreateOrUpdateCommandResponse>
+    public class CreateLeaveRequestCommand : IRequest<CreateOrUpdateCommandResponse>
     {
         public CreateLeaveRequestDto CreateLeaveRequestDto { get; set; }
     }

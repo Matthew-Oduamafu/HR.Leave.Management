@@ -7,16 +7,17 @@ using MediatR;
 
 namespace HR.Leave.Management.Application.Features.LeaveRequests.Handlers.Commands
 {
-    public class UpdateLeaveRequestCommandHandler:IRequestHandler<UpdateLeaveRequestCommand, CreateOrUpdateCommandResponse>
+    public class UpdateLeaveRequestCommandHandler : IRequestHandler<UpdateLeaveRequestCommand, CreateOrUpdateCommandResponse>
     {
         private readonly ILeaveRequestRepository _leaveRequestRepository;
         private readonly ILeaveTypeRepository _leaveTypeRepository;
         private readonly IMapper _mapper;
+
         public UpdateLeaveRequestCommandHandler(ILeaveRequestRepository leaveRequest, ILeaveTypeRepository leaveTypeRepository, IMapper mapper)
         {
-            _leaveRequestRepository= leaveRequest;
-            _leaveTypeRepository= leaveTypeRepository;
-            _mapper= mapper;
+            _leaveRequestRepository = leaveRequest;
+            _leaveTypeRepository = leaveTypeRepository;
+            _mapper = mapper;
         }
 
         public async Task<CreateOrUpdateCommandResponse> Handle(UpdateLeaveRequestCommand request, CancellationToken cancellationToken)
@@ -24,7 +25,7 @@ namespace HR.Leave.Management.Application.Features.LeaveRequests.Handlers.Comman
             var response = new CreateOrUpdateCommandResponse();
             var leaveRequest = await _leaveRequestRepository.Get(request.Id);
 
-            if(leaveRequest != null)
+            if (leaveRequest != null)
             {
                 if (request.UpdateLeaveRequestDto != null)
                 {
@@ -70,9 +71,8 @@ namespace HR.Leave.Management.Application.Features.LeaveRequests.Handlers.Comman
 
                 return response;
             }
-            
 
-            response.Id= leaveRequest.Id;
+            response.Id = leaveRequest.Id;
             response.Success = true;
             response.Message = "Update successful";
             response.Object = leaveRequest;

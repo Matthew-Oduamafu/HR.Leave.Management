@@ -1,5 +1,4 @@
 ﻿using HR.Leave.Management.Application.DTOs.Common;
-using HR.Leave.Management.Application.DTOs.LeaveType;
 
 namespace HR.Leave.Management.Application.DTOs.LeaveRequest
 {

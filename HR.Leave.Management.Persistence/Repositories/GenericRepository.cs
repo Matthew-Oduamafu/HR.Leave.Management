@@ -6,9 +6,10 @@ namespace HR.Leave.Management.Persistence.Repositories
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         private readonly HRLeaveManagementDbContext _dbContext;
+
         public GenericRepository(HRLeaveManagementDbContext dbContext)
         {
-            _dbContext= dbContext;
+            _dbContext = dbContext;
         }
 
         public async Task<T> Add(T entity)
@@ -42,7 +43,7 @@ namespace HR.Leave.Management.Persistence.Repositories
 
         public async Task Update(T entity)
         {
-            _dbContext.Entry(entity).State= EntityState.Modified;
+            _dbContext.Entry(entity).State = EntityState.Modified;
             await _dbContext.SaveChangesAsync();
         }
     }

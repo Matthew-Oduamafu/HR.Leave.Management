@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace HR.Leave.Management.Application.DTOs.LeaveRequest
+﻿namespace HR.Leave.Management.Application.DTOs.LeaveRequest
 {
     public interface ILeaveRequestDto
     {

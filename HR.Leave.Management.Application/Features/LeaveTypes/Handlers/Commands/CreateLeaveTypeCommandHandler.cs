@@ -12,11 +12,13 @@ namespace HR.Leave.Management.Application.Features.LeaveTypes.Handlers.Commands
     {
         private readonly ILeaveTypeRepository _leaveTypeRepository;
         private readonly IMapper _mapper;
+
         public CreateLeaveTypeCommandHandler(ILeaveTypeRepository leaveTypeRepository, IMapper mapper)
         {
-            _leaveTypeRepository= leaveTypeRepository;
-            _mapper= mapper;
+            _leaveTypeRepository = leaveTypeRepository;
+            _mapper = mapper;
         }
+
         public async Task<CreateOrUpdateCommandResponse> Handle(CreateLeaveTypeCommand request, CancellationToken cancellationToken)
         {
             var response = new CreateOrUpdateCommandResponse();
@@ -24,7 +26,7 @@ namespace HR.Leave.Management.Application.Features.LeaveTypes.Handlers.Commands
             var validate = new CreateLeaveTypeDtoValidator();
             var validationResult = validate.Validate(request.CreateLeaveTypeDto);
 
-            if(validationResult.IsValid == false)
+            if (validationResult.IsValid == false)
             {
                 response.Success = false;
                 response.Message = "Creation failed";

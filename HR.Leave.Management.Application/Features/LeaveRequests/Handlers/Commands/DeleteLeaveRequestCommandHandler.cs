@@ -5,12 +5,13 @@ using MediatR;
 
 namespace HR.Leave.Management.Application.Features.LeaveRequests.Handlers.Commands
 {
-    public class DeleteLeaveRequestCommandHandler:IRequestHandler<DeleteLeaveRequestCommand, BaseCommandResponse>
+    public class DeleteLeaveRequestCommandHandler : IRequestHandler<DeleteLeaveRequestCommand, BaseCommandResponse>
     {
         private readonly ILeaveRequestRepository _leaveRequestRepository;
+
         public DeleteLeaveRequestCommandHandler(ILeaveRequestRepository leaveRequestRepository)
         {
-            _leaveRequestRepository= leaveRequestRepository;
+            _leaveRequestRepository = leaveRequestRepository;
         }
 
         public async Task<BaseCommandResponse> Handle(DeleteLeaveRequestCommand request, CancellationToken cancellationToken)
@@ -18,12 +19,12 @@ namespace HR.Leave.Management.Application.Features.LeaveRequests.Handlers.Comman
             var response = new BaseCommandResponse();
             var leaveRequest = await _leaveRequestRepository.Get(request.Id);
 
-            if(leaveRequest == null)
+            if (leaveRequest == null)
             {
                 response.Id = request.Id;
                 response.Success = false;
-                response.Message= "Deletion failed";
-                response.Errors= new List<string> { "Item not found"};
+                response.Message = "Deletion failed";
+                response.Errors = new List<string> { "Item not found" };
 
                 return response;
             }

@@ -2,7 +2,7 @@
 
 namespace HR.Leave.Management.Application.Exceptions
 {
-    public class ValidationException:ApplicationException
+    public class ValidationException : ApplicationException
     {
         public List<string> Errors { get; set; } = new List<string>();
 

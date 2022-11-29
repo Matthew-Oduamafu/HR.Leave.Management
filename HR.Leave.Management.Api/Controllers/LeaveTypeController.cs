@@ -1,10 +1,8 @@
-﻿using AutoMapper;
-using HR.Leave.Management.Application.DTOs.LeaveType;
+﻿using HR.Leave.Management.Application.DTOs.LeaveType;
 using HR.Leave.Management.Application.Features.LeaveTypes.Requests.Commands;
 using HR.Leave.Management.Application.Features.LeaveTypes.Requests.Queries;
 using HR.Leave.Management.Application.Responses;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HR.Leave.Management.Api.Controllers
@@ -17,9 +15,8 @@ namespace HR.Leave.Management.Api.Controllers
 
         public LeaveTypeController(IMediator mediator)
         {
-            _mediator= mediator;
+            _mediator = mediator;
         }
-
 
         // GET: LeaveTypeController
         [HttpGet]
@@ -33,7 +30,7 @@ namespace HR.Leave.Management.Api.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<LeaveTypeDto>> Get(int id)
         {
-            var leaveType = await _mediator.Send(new GetLeaveTypeDetailRequest { Id = id});
+            var leaveType = await _mediator.Send(new GetLeaveTypeDetailRequest { Id = id });
             return Ok(leaveType);
         }
 
@@ -53,7 +50,6 @@ namespace HR.Leave.Management.Api.Controllers
             var response = await _mediator.Send(new UpdateLeaveTypeCommand { LeaveTypeDto = leaveTypeDto });
             return Ok(response);
         }
-
 
         // GET: LeaveTypeController/Delete/5
         [HttpDelete("{id}")]

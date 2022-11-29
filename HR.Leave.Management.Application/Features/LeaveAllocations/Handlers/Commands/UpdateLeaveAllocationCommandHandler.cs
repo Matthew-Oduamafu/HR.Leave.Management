@@ -1,24 +1,23 @@
 ﻿using AutoMapper;
 using HR.Leave.Management.Application.Contracts.Persistence;
-using HR.Leave.Management.Application.DTOs.LeaveAllocation;
 using HR.Leave.Management.Application.DTOs.LeaveAllocation.Validator;
-using HR.Leave.Management.Application.DTOs.LeaveType.Validators;
 using HR.Leave.Management.Application.Features.LeaveAllocations.Requests.Commands;
 using HR.Leave.Management.Application.Responses;
 using MediatR;
 
 namespace HR.Leave.Management.Application.Features.LeaveAllocations.Handlers.Commands
 {
-    public class UpdateLeaveAllocationCommandHandler:IRequestHandler<UpdateLeaveAllocationCommand, CreateOrUpdateCommandResponse>
+    public class UpdateLeaveAllocationCommandHandler : IRequestHandler<UpdateLeaveAllocationCommand, CreateOrUpdateCommandResponse>
     {
         private readonly ILeaveAllocationRepository _leaveAllocationRepository;
         private readonly ILeaveTypeRepository _leaveTypeRepository;
         private readonly IMapper _mapper;
+
         public UpdateLeaveAllocationCommandHandler(ILeaveAllocationRepository leaveAllocation, ILeaveTypeRepository leaveTypeRepository, IMapper mapper)
         {
-            _leaveAllocationRepository= leaveAllocation;
-            _leaveTypeRepository= leaveTypeRepository;
-            _mapper= mapper;
+            _leaveAllocationRepository = leaveAllocation;
+            _leaveTypeRepository = leaveTypeRepository;
+            _mapper = mapper;
         }
 
         public async Task<CreateOrUpdateCommandResponse> Handle(UpdateLeaveAllocationCommand request, CancellationToken cancellationToken)
@@ -40,7 +39,7 @@ namespace HR.Leave.Management.Application.Features.LeaveAllocations.Handlers.Com
             leaveAllocation = _mapper.Map(request.UpdateLeaveAllocationDto, leaveAllocation);
             await _leaveAllocationRepository.Update(leaveAllocation);
 
-            response.Id= leaveAllocation.Id;
+            response.Id = leaveAllocation.Id;
             response.Success = true;
             response.Message = "Update successful";
             response.Object = leaveAllocation;

@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HR.Leave.Management.Persistence
 {
-    public class HRLeaveManagementDbContext:DbContext
+    public class HRLeaveManagementDbContext : DbContext
     {
-        public HRLeaveManagementDbContext(DbContextOptions<HRLeaveManagementDbContext> options): base(options)
+        public HRLeaveManagementDbContext(DbContextOptions<HRLeaveManagementDbContext> options) : base(options)
         {
         }
 
@@ -17,13 +17,14 @@ namespace HR.Leave.Management.Persistence
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
-            foreach(var entry in ChangeTracker.Entries<BaseDomainEntity>())
+            foreach (var entry in ChangeTracker.Entries<BaseDomainEntity>())
             {
-                if(entry.State== EntityState.Added)
+                if (entry.State == EntityState.Added)
                 {
                     entry.Entity.DateCreated = DateTime.UtcNow;
                     entry.Entity.CreatedBy = "Matthew Oduamafu";
-                }else if(entry.State== EntityState.Modified)
+                }
+                else if (entry.State == EntityState.Modified)
                 {
                     entry.Entity.LastUpdateDate = DateTime.UtcNow;
                     entry.Entity.UpdatedBy = "Matthew Oduamfu";
@@ -35,6 +36,7 @@ namespace HR.Leave.Management.Persistence
 
         // add entities
         public DbSet<LeaveType> LeaveType { get; set; }
+
         public DbSet<LeaveAllocation> LeaveAllocation { get; set; }
         public DbSet<LeaveRequest> LeaveRequest { get; set; }
     }

@@ -9,10 +9,12 @@ namespace HR.Leave.Management.Infrastructure.Mail
     public class EmailSender : IEmailSender
     {
         private readonly EmailSettings _emailSettings;
+
         public EmailSender(IOptions<EmailSettings> emailSettings)
         {
             _emailSettings = emailSettings.Value;
         }
+
         public async Task<bool> SendEmail(Email email)
         {
             var client = new SendGridClient(_emailSettings.ApiKey);
