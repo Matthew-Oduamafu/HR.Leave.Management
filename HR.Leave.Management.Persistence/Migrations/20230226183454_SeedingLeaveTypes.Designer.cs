@@ -4,6 +4,7 @@ using HR.Leave.Management.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HR.Leave.Management.Persistence.Migrations
 {
     [DbContext(typeof(HRLeaveManagementDbContext))]
-    partial class HRLeaveManagementDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230226183454_SeedingLeaveTypes")]
+    partial class SeedingLeaveTypes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -149,7 +152,7 @@ namespace HR.Leave.Management.Persistence.Migrations
                         {
                             Id = 1,
                             CreatedBy = "Matthew Oduamafu",
-                            DateCreated = new DateTime(2023, 2, 26, 18, 38, 54, 367, DateTimeKind.Utc).AddTicks(2896),
+                            DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DefaultDays = 10,
                             Name = "Vacation"
                         },
@@ -157,7 +160,7 @@ namespace HR.Leave.Management.Persistence.Migrations
                         {
                             Id = 2,
                             CreatedBy = "Matthew Oduamafu",
-                            DateCreated = new DateTime(2023, 2, 26, 18, 38, 54, 367, DateTimeKind.Utc).AddTicks(2901),
+                            DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DefaultDays = 12,
                             Name = "Sick"
                         });

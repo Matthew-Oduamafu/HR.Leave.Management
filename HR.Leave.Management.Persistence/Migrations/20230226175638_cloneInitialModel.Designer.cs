@@ -4,6 +4,7 @@ using HR.Leave.Management.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HR.Leave.Management.Persistence.Migrations
 {
     [DbContext(typeof(HRLeaveManagementDbContext))]
-    partial class HRLeaveManagementDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230226175638_cloneInitialModel")]
+    partial class cloneInitialModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -143,24 +146,6 @@ namespace HR.Leave.Management.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("LeaveType");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedBy = "Matthew Oduamafu",
-                            DateCreated = new DateTime(2023, 2, 26, 18, 38, 54, 367, DateTimeKind.Utc).AddTicks(2896),
-                            DefaultDays = 10,
-                            Name = "Vacation"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CreatedBy = "Matthew Oduamafu",
-                            DateCreated = new DateTime(2023, 2, 26, 18, 38, 54, 367, DateTimeKind.Utc).AddTicks(2901),
-                            DefaultDays = 12,
-                            Name = "Sick"
-                        });
                 });
 
             modelBuilder.Entity("HR.Leave.Management.Domain.LeaveAllocation", b =>

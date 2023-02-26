@@ -12,7 +12,7 @@ namespace HR.Leave.Management.Application.DTOs.LeaveType.Validators
 
             RuleFor(x => x.DefaultDays)
                 .NotNull().WithMessage("{PropertyName} must be present")
-                .GreaterThan(0).WithMessage("{PropertyName} must exceed {ComaprisonValue}");
+                .GreaterThan(0).WithMessage("{PropertyName} must exceed {ComparisonValue}");
         }
     }
 }

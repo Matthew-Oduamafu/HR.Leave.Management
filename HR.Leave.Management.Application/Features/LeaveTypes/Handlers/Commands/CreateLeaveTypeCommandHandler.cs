@@ -30,7 +30,7 @@ namespace HR.Leave.Management.Application.Features.LeaveTypes.Handlers.Commands
             {
                 response.Success = false;
                 response.Message = "Creation failed";
-                response.Errors = validationResult.Errors.Select(x => x.ErrorMessage).ToList();
+                response.Errors = validationResult.Errors.ConvertAll(x => x.ErrorMessage);
 
                 return response;
             }
